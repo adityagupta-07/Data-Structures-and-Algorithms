@@ -67,6 +67,19 @@ class SinglyLinkedList:
         self._length -= 1
         return current_node.value
 
+    def reverse(self):
+        if self._length < 2:
+            return self
+        left_node = None
+        middle_node = self.head
+        while middle_node is not None:
+            right_node = middle_node.next
+            middle_node.next = left_node
+            left_node = middle_node
+            middle_node = right_node
+        self.head, self.tail = self.tail, self.head
+        return self
+
 a = SinglyLinkedList()  
  
 # a.append(5) 
