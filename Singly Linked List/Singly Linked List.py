@@ -35,12 +35,12 @@ class SinglyLinkedList:
 
 a = SinglyLinkedList()  
  
-a.append(5) 
-a.append(9) 
+# a.append(5) 
+# a.append(9) 
 a.append(14)
-a.pop_left()
+print(a.pop_left())
 
 
-print(a.head.value)
-print(a.tail.value)
-print(a._length)
+# print(a.head.value)
+# print(a.tail.value)
+# print(a._length)
