@@ -23,9 +23,14 @@ class SinglyLinkedList: # Defines SinglyLinkedList named class object in memory
         if self._length == 0: # SinglyLinkedList obj {head=none, tail=none, _length=0}
             self.head = self.tail = new_node # when _length=0, {head=none, tail=none, _length=0} becomes {head={value=4, next=none}, tail={value=4, next=none}, _length=0}
         else:
+            # only if _length=1
+            # {head={value=4, next=none}, tail={value=4, next=none}, _length=1}
+            # new_node = {value=5, next=none}
             self.tail.next = new_node
+            # {head={value=4, next=none}, tail={value=4, next={value=5, next=none}}, _length=1}
             self.tail = new_node
-        self._length += 1 # {head={value=4, next=none}, tail={value=4, next=none}, _length=1} 
+            # {head={value=4, next=none}, tail={value=5, next=none}, _length=1}
+        self._length += 1 # {head={value=4, next=none}, tail={value=5, next=none}, _length=2}
         return self 
 
 a = SinglyLinkedList() # SinglyLinkedList() creats new empty object {} from class SinglyLinkedList and then a points towards that newly made object
@@ -33,4 +38,5 @@ a = SinglyLinkedList() # SinglyLinkedList() creats new empty object {} from clas
 a.append(4) 
 # SinglyLinkedList.append(a, 4)
 a.append(5) 
+# SinglyLinkedList.append(a, 5) 
  
