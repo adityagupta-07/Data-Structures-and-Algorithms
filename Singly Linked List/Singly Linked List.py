@@ -33,6 +33,21 @@ class SinglyLinkedList:
             self.tail = None
         return former_head.value
 
+    def pop_right(self):
+        if not self._length:
+            raise Exception("list is empty")
+        tail_value = self.tail.value
+        if self._length == 1:
+            self.head = self.tail = None
+        else:
+            temp_node = self.head
+            while temp_node.next is not self.tail:
+                temp_node = temp_node.next
+            self.tail = temp_node
+            self.tail.next = None
+        self._length -= 1
+        return tail_value
+
 a = SinglyLinkedList()  
  
 # a.append(5) 
