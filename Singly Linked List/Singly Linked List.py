@@ -48,6 +48,25 @@ class SinglyLinkedList:
         self._length -= 1
         return tail_value
 
+    def remove(self, value):
+        if not self._length:
+            raise Exception("list is empty")
+        if self.head.value == value:
+            return self.pop_left()
+        previous_node = self.head
+        current_node = self.head.next
+        while current_node is not None and current_node.value != value:
+            previous_node = current_node
+            current_node = current_node.next
+        if current_node is None:
+            raise ValueError("item not in list")
+        if current_node.next is None:
+            self.tail = previous_node
+        previous_node.next = current_node.next
+        current_node.next = None
+        self._length -= 1
+        return current_node.value
+
 a = SinglyLinkedList()  
  
 # a.append(5) 
