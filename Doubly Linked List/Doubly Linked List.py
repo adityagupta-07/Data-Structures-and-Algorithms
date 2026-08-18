@@ -59,4 +59,41 @@ class DoublyLinkedList:
         self._length -= 1
         return former_tail.value
 
+    def remove(self, value):
+        if not self._length:
+            raise Exception("list is empty")
+        if self.head.value == value:
+            return self.pop_left()
+        previous_node = self.head
+        current_node = self.head.next
+        while current_node is not None and current_node.value != value:
+            previous_node = current_node
+            current_node = current_node.next
+        if current_node is None:
+            raise ValueError("item not in list")
+        if current_node.next is None:
+            return self.pop_right()
+        current_node.next.previous = previous_node
+        previous_node.next = current_node.next
+        current_node.previous = None
+        current_node.next = None
+        self._length -= 1
+        return current_node.value
 
+
+
+a = DoublyLinkedList()
+
+a.append(4)
+a.append(5)
+a.append(6)
+a.append(8)
+a.append(9)
+
+print(a.head.value)
+print(a.tail.value)
+print(a._length)
+
+a.remove(9)
+
+print(a._length)
