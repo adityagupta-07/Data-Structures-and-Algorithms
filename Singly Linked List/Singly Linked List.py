@@ -53,6 +53,8 @@ class SinglyLinkedList:
             raise Exception("list is empty")
         if self.head.value == value:
             return self.pop_left()
+        if self.tail.value == value:
+            return self.pop_right()
         previous_node = self.head
         current_node = self.head.next
         while current_node is not None and current_node.value != value:
@@ -82,10 +84,14 @@ class SinglyLinkedList:
 
 a = SinglyLinkedList()  
  
-# a.append(5) 
-# a.append(9) 
+a.append(5) 
+a.append(9) 
 a.append(14)
-print(a.pop_left())
+
+a.remove(14)
+
+print(a.tail.value)
+print(a._length)
 
 
 # print(a.head.value)
