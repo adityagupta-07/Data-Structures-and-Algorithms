@@ -27,6 +27,23 @@ class Graph:
     def remove_vertex(self, vertex): # Suppose vertex = A
         if vertex not in self.graph_dict:
             raise Exception("Vertex not in graph")
+        '''
+        for example: 
+        {
+            "A": ["B", "C", "D", "E"],
+            "B": ["A", "C"],
+            "C": ["A", "B", "E"],
+            "D": ["A", "E", "F"],
+            "E": ["A", "C", "D", "F"],
+            "F": ["D", "E"]
+        }
+        self.graph_dict[vertex] = self.graph_dict["A"] = ["B", "C", "D", "E"]
+        for neighbor in ["B", "C", "D", "E"]
+            self.graph_dict[neighbor] = self.graph_dict["B"] = ["A", "C"]
+            ["A", "C"].remove("A") = ["C"]
+        self.graph_dict.pop(vertex) = self.graph_dict.pop("A") = remove ("A": ["B", "C", "D", "E"]) from graph_dict
+        return
+        '''
         for neighbor in self.graph_dict[vertex]:
             self.graph_dict[neighbor].remove(vertex)
         self.graph_dict.pop(vertex)
@@ -47,6 +64,22 @@ class Graph:
 
         traverse(starting_node)
         return visited
+
+    '''
+    DFT RECURSIVE
+    1. Check that starting_node exists.
+    2. Create an empty explored set.
+    3. Create an empty visited list.
+    4. Define a recursive traversal function:
+        traverse(current_node):
+            Add current_node to explored set.
+            Append current_node to visited list.
+            FOR each neighbor of current_node:
+                IF neighbor is not in explored:
+                    Recursively traverse that neighbor.
+    5. Start traversal from starting_node.
+    6. Return visited.
+    '''
 
     def dft_iterative(self, starting_node): # We can start the traversal from any node.
         if starting_node not in self.graph_dict:
@@ -82,7 +115,24 @@ class Graph:
                     queue.append(member) 
         return visited
 
+    '''
+    We can start the traversal from any node.
+    BFT(starting_node) 
 
-
-
-    
+    1. Check that starting_node exists.
+    2. Create an empty queue.
+    3. Append starting_node into the queue.
+    4. Create an empty explored list.
+    5. Create an empty visited list.
+    6. WHILE the queue is not empty:
+        Popleft() the vertex(first/left most) from the queue.
+        Append it to explored.
+        Append it to visited.
+        Look at all its neighbors.
+        For every neighbor:
+            Check if the neighbour is in explored list.
+            If no:
+                Mark it as explored.
+                Add it to the queue.
+    7. Return visited.
+    '''
