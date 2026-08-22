@@ -387,3 +387,27 @@ array = [[1, 4], [2, 5], [3, 6]]
 5. Continue until all inner arrays and all their elements have been processed.
 6. Return the result list.
 '''
+
+array1 = [10, 5, 8, 2, 7, 3, 9, 1, 6, 4]
+print(insertion_sort(array1.copy()))
+
+array2 = [10, 5, 8, 2, 7, 3, 9, 1, 6, 4]
+print(selection_sort(array2.copy()))
+
+array3 = [10, 5, 8, 2, 7, 3, 9, 1, 6, 4]
+print(bubble_sort(array3.copy()))
+
+array4 = [10, 5, 8, 2, 7, 3, 9, 1, 6, 4]
+print(shell_sort(array4.copy()))
+
+array5 = [10, 5, 8, 2, 7, 3, 9, 1, 6, 4]
+print(merge_sort(array5.copy()))
+
+array6 = [10, 5, 8, 2, 7, 3, 9, 1, 6, 4]
+print(quick_sort(array6.copy()))
+
+array7 = [10, 5, 8, 2, 7, 3, 9, 1, 6, 4]
+print(heap_sort(array7.copy()))
+
+array8 = [170, 45, 75, 90, 802, 24, 2, 66]
+print(radix_sort(array8.copy()))

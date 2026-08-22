@@ -42,11 +42,24 @@ class Stack:
         return self
 
 
-a = Stack()
+s = Stack()
 
-a.push("google")
-a.push(9)
-a.pop()
+s.push(4)
+s.push(5)
+s.push(6)
+s.push(7)
+s.push(8)
+s.push(9)
+s.push(10)
+s.push(12)
+s.push(14)
+s.push(19)
+s.push(21)
+s.push(29)
 
-print(a.peek())
-print(len(a))
+print(len(s))
+print(s.peek())
+
+print(s.pop())
+print(s.peek())
+print(len(s))

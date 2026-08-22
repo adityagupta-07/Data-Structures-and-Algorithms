@@ -43,3 +43,25 @@ class Queue:
         if self.head:
             return self.head.value
         return None
+
+q = Queue()
+
+q.enqueue(4)
+q.enqueue(5)
+q.enqueue(6)
+q.enqueue(7)
+q.enqueue(8)
+q.enqueue(9)
+q.enqueue(10)
+q.enqueue(12)
+q.enqueue(14)
+q.enqueue(19)
+q.enqueue(21)
+q.enqueue(29)
+
+print(len(q))
+print(q.peek())
+
+print(q.dequeue())
+print(q.peek())
+print(len(q))

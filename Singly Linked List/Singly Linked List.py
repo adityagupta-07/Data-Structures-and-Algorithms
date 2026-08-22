@@ -82,18 +82,26 @@ class SinglyLinkedList:
         self.head, self.tail = self.tail, self.head
         return self
 
-a = SinglyLinkedList()  
- 
-a.append(5) 
-a.append(9) 
+a = SinglyLinkedList()
+
+a.append(4)
+a.append(5)
+a.append(6)
+a.append(7)
+a.append(8)
+a.append(9)
+a.append(10)
+a.append(12)
 a.append(14)
+a.append(19)
+a.append(21)
+a.append(29)
+
+print(len(a))
+print(a.head.value, a.tail.value)
 
 a.remove(14)
+print(len(a))
 
-print(a.tail.value)
-print(a._length)
-
-
-# print(a.head.value)
-# print(a.tail.value)
-# print(a._length)
+a.reverse()
+print(a.head.value, a.tail.value)

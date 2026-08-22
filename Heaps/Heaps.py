@@ -150,3 +150,26 @@ Sift-Down Algorithm (Max-Heap, array/heapsort version)
    - There's no child left within range (child_idx > end_idx), or
    - The item at start_idx is already bigger than its biggest child.
 '''
+
+h = MaxBinaryHeap()
+
+h.insert(4)
+h.insert(5)
+h.insert(6)
+h.insert(7)
+h.insert(8)
+h.insert(9)
+h.insert(10)
+h.insert(12)
+h.insert(14)
+h.insert(19)
+h.insert(21)
+h.insert(29)
+
+print(h.items)
+
+print(h.remove_max())
+print(h.items)
+
+arr = [4, 10, 3, 5, 1, 8, 9, 2, 7, 6]
+print(heapify(arr))

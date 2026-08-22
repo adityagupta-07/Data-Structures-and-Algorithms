@@ -121,3 +121,20 @@ class BinarySearchTree:
                 current = stack.pop()
             stack.append(current)
             current = current.right
+
+a = BinarySearchTree()
+a.root = Node(10)
+a.root.left = Node(5)
+a.root.right = Node(15)
+a.root.left.left = Node(3)
+a.root.left.right = Node(7)
+a.root.right.left = Node(12)
+a.root.right.right = Node(20)
+
+print(a.breadth_first_traversal())
+print(a.dft_pre_order_recursive())
+print(a.dft_pre_order_iterative())
+print(a.dft_in_order_recursive())
+print(a.dft_in_order_iterative())
+print(a.dft_post_order_recursive())
+print(a.dft_post_order_iterative())
