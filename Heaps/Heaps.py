@@ -87,7 +87,8 @@ class MaxBinaryHeap:
 def heapify(array):
     last_parent_idx = len(array) // 2 - 1
     for parent_idx in range(last_parent_idx, -1, -1):
-        move_down(array, parent_idx, last_idx = (len(array) - 1))
+        last_idx = (len(array) - 1)
+        move_down(array, parent_idx, last_idx)
     return array
 
 def move_down(array, parent_idx, last_idx):
