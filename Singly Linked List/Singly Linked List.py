@@ -3,20 +3,20 @@ class Node:
         self.value = value
         self.next = None
 
-# class LinkedListIterator:
-#     def __init__(self, head):
-#         self.current = head
+class LinkedListIterator:
+    def __init__(self, head):
+        self.current = head
 
-#     def __iter__(self):
-#         return self
+    def __iter__(self):
+        return self
 
-#     def __next__(self):
-#         if not self.current:
-#             raise StopIteration
-#         else:
-#             item = self.current.value
-#             self.current = self.current.next
-#             return item
+    def __next__(self):
+        if not self.current:
+            raise StopIteration
+        else:
+            item = self.current.value
+            self.current = self.current.next
+            return item
 
 class SinglyLinkedList:
     def __init__(self):
@@ -27,8 +27,8 @@ class SinglyLinkedList:
     def __len__(self):
         return self._length
 
-    # def __iter__(self):
-    #     return LinkedListIterator(self.head)
+    def __iter__(self):
+        return LinkedListIterator(self.head)
 
     def append(self, value):
         new_node = Node(value)
@@ -100,12 +100,74 @@ class SinglyLinkedList:
         self.head, self.tail = self.tail, self.head
         return self
 
-    def traverse(self, head):
-        node = head
+    def traverse(self):
+        node = self.head
         while node:
-            print(f"{node.value} → ")
+            print(f"{node.value} → ", end = " ")
             node = node.next
         return
+
+
+def split(head):
+    fast = head
+    slow = head
+
+    # Move fast pointer two steps and slow pointer
+    # one step until fast reaches the end
+    while fast and fast.next:
+        fast = fast.next.next
+        if fast:
+            slow = slow.next
+
+    # Split the list into two halves
+    second = slow.next
+    slow.next = None
+    return second
+
+def merge(first, second):
+  
+    # If either list is empty, return the other list
+    if not first:
+        return second
+    if not second:
+        return first
+
+    # Pick the smaller value between first and second nodes
+    if first.value < second.value:
+        first.next = merge(first.next, second)
+        return first
+    else:
+        second.next = merge(first, second.next)
+        return second
+
+def mergeSort(head):
+  
+    # Base case: if the list is empty or has only one node, 
+    # it's already sorted
+    if not head or not head.next:
+        return head
+
+    # Split the list into two halves
+    second = split(head)
+
+    # Recursively sort each half
+    head = mergeSort(head)
+    second = mergeSort(second)
+
+    # Merge the two sorted halves
+    return merge(head, second)
+
+def printList(head):
+    current = head
+    while current is not None:
+        print(current.value, end=" ")
+        if current.next:
+            print("->", end=" ")
+        current = current.next
+    print()
+
+
+
     
 
 a = SinglyLinkedList()
@@ -122,38 +184,17 @@ a.append(14)
 a.append(19)
 a.append(21)
 a.append(29)
+a.append(19)
+a.append(11)
+a.append(10)
+a.append(9)
 
 print(len(a))
 print(a.head.value, a.tail.value)
 
-# a.traverse(a.head)
+# a.traverse()
 
+# print(mergeSort(a.head))
 
-# Loop through the nodes and print the value of each node
-# node = a.head
-# while node in a: # we need to make class iterable to execute this
-#     print(node)
-#     node = node.next
-
-# Loop through the nodes and print the value of each node
-node = a.head
-while node is not None: # we don't need to make class iterable to execute this
-    print(node.value)
-    node = node.next
-
-# for node in a:
-#     print(node)
-
-# a = iter(a)
-# print(a)
-
-# head = next(a)
-# node = head
-# while node:
-#     print(node.value)
-#     node = next(a)
-
-# node = a.head
-# while node is not None:
-#     print(node.value)
-#     node = node.next
+b = mergeSort(a.head)
+printList(b)
