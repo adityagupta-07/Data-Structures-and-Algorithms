@@ -3,6 +3,21 @@ class Node:
         self.value = value
         self.next = None
 
+# class LinkedListIterator:
+#     def __init__(self, head):
+#         self.current = head
+
+#     def __iter__(self):
+#         return self
+
+#     def __next__(self):
+#         if not self.current:
+#             raise StopIteration
+#         else:
+#             item = self.current.value
+#             self.current = self.current.next
+#             return item
+
 class SinglyLinkedList:
     def __init__(self):
         self.head = None
@@ -11,6 +26,9 @@ class SinglyLinkedList:
 
     def __len__(self):
         return self._length
+
+    # def __iter__(self):
+    #     return LinkedListIterator(self.head)
 
     def append(self, value):
         new_node = Node(value)
@@ -82,6 +100,14 @@ class SinglyLinkedList:
         self.head, self.tail = self.tail, self.head
         return self
 
+    def traverse(self, head):
+        node = head
+        while node:
+            print(f"{node.value} → ")
+            node = node.next
+        return
+    
+
 a = SinglyLinkedList()
 
 a.append(4)
@@ -100,8 +126,34 @@ a.append(29)
 print(len(a))
 print(a.head.value, a.tail.value)
 
-a.remove(14)
-print(len(a))
+# a.traverse(a.head)
 
-a.reverse()
-print(a.head.value, a.tail.value)
+
+# Loop through the nodes and print the value of each node
+# node = a.head
+# while node in a: # we need to make class iterable to execute this
+#     print(node)
+#     node = node.next
+
+# Loop through the nodes and print the value of each node
+node = a.head
+while node is not None: # we don't need to make class iterable to execute this
+    print(node.value)
+    node = node.next
+
+# for node in a:
+#     print(node)
+
+# a = iter(a)
+# print(a)
+
+# head = next(a)
+# node = head
+# while node:
+#     print(node.value)
+#     node = next(a)
+
+# node = a.head
+# while node is not None:
+#     print(node.value)
+#     node = node.next
