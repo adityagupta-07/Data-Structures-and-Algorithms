@@ -3,6 +3,21 @@ class Node:
         self.value = value
         self.next = None
 
+class SinglyLinkedListIterator:
+    def __init__(self, head):
+        self.current = head
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.current:
+            item = self.current.value
+            self.current = self.current.next
+            return item
+        else:
+            raise StopIteration
+        
 class SinglyLinkedList:
     def __init__(self):
         self.head = None
@@ -11,6 +26,9 @@ class SinglyLinkedList:
 
     def __len__(self):
             return self._length
+
+    def __iter__(self):
+        return SinglyLinkedListIterator(self.head)
 
     def append(self, value):
             new_node = Node(value)
@@ -42,10 +60,18 @@ print(f"Number of nodes: {len(a)} \nHead: {a.head.value} \nTail: {a.tail.value}"
 
 
 # Loop throught all the nodes and print value of each node:
-node = a.head
-count = 0
-while node:
-    print(node.value, end = " ")
-    count += 1
-    node = node.next
-print(f"\nCount: {count}")
+# node = a.head
+# while node:
+#     print(node.value)
+#     node = node.next
+    
+# Loop throught all the nodes and print value of each node (iterable class):
+# node = a.head
+# while node in a:
+#     print(node.value)
+#     node = node.next
+
+
+
+for node in a:
+    print(node)
