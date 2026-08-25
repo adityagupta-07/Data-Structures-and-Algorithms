@@ -102,77 +102,23 @@ class SinglyLinkedList:
 
     def traverse(self):
         node = self.head
+        if node:
+            print("Traversal: ", end = "") 
         while node:
             print(node.value, end = " ")
             if node.next:
                 print(" → ", end = " ")
             node = node.next
+        print() 
         return
-
-
-def split(head):
-    fast = head
-    slow = head
-
-    # Move fast pointer two steps and slow pointer
-    # one step until fast reaches the end
-    while fast and fast.next:
-        fast = fast.next.next
-        if fast:
-            slow = slow.next
-
-    # Split the list into two halves
-    second = slow.next
-    slow.next = None
-    return second
-
-def merge(first, second):
-  
-    # If either list is empty, return the other list
-    if not first:
-        return second
-    if not second:
-        return first
-
-    # Pick the smaller value between first and second nodes
-    if first.value < second.value:
-        first.next = merge(first.next, second)
-        return first
-    else:
-        second.next = merge(first, second.next)
-        return second
-
-def mergeSort(head):
-  
-    # Base case: if the list is empty or has only one node, 
-    # it's already sorted
-    if not head or not head.next:
-        return head
-
-    # Split the list into two halves
-    second = split(head)
-
-    # Recursively sort each half
-    head = mergeSort(head)
-    second = mergeSort(second)
-
-    # Merge the two sorted halves
-    return merge(head, second)
-
-def printList(head):
-    current = head
-    while current is not None:
-        print(current.value, end=" ")
-        if current.next:
-            print("->", end=" ")
-        current = current.next
-    print()
 
 
 
     
 
 a = SinglyLinkedList()
+b = SinglyLinkedList()
+
 
 a.append(4)
 a.append(5)
@@ -188,13 +134,15 @@ a.append(21)
 a.append(29)
 a.append(19)
 a.append(11)
+a.append(40, 41, 42, 43, 44, 45)
+a.append(9)
+a.append(10)
+b.append(15)
+b.append(30, 81, 32, 35, 36, 29, 25, 15, 90, 1)
+b.append(9)
 
 print(len(a))
 print(a.head.value, a.tail.value)
 
 a.traverse()
-
-# print(mergeSort(a.head))
-
-# b = mergeSort(a.head)
-# printList(b)
+b.traverse()
