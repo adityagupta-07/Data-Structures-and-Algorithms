@@ -103,7 +103,9 @@ class SinglyLinkedList:
     def traverse(self):
         node = self.head
         while node:
-            print(f"{node.value} → ", end = " ")
+            print(node.value, end = " ")
+            if node.next:
+                print(" → ", end = " ")
             node = node.next
         return
 
@@ -186,15 +188,13 @@ a.append(21)
 a.append(29)
 a.append(19)
 a.append(11)
-a.append(10)
-a.append(9)
 
 print(len(a))
 print(a.head.value, a.tail.value)
 
-# a.traverse()
+a.traverse()
 
 # print(mergeSort(a.head))
 
-b = mergeSort(a.head)
-printList(b)
+# b = mergeSort(a.head)
+# printList(b)
