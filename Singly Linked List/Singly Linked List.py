@@ -103,12 +103,27 @@ class SinglyLinkedList:
 
     def traverse(self):
         node = self.head
+        if node:
+            print("Traversal: ", end = "") 
         while node:
             print(node.value, end = " ")
             if node.next:
                 print(" → ", end = " ")
             node = node.next
+        print() 
         return
+
+    def sort(self):
+        if self._length < 2:
+            return self
+        self.head = mergeSort(self.head)
+        node = self.head
+        while node.next:
+            node = node.next
+        self.tail = node
+        print("Sorting: ", end = "")
+        printList(self.head)
+        return self
 
 
 def split(head):
@@ -165,7 +180,7 @@ def printList(head):
     while current is not None:
         print(current.value, end=" ")
         if current.next:
-            print("->", end=" ")
+            print(" → ", end=" ")
         current = current.next
     print()
 
@@ -174,6 +189,8 @@ def printList(head):
     
 
 a = SinglyLinkedList()
+b = SinglyLinkedList()
+
 
 a.append(4)
 a.append(5)
@@ -192,13 +209,15 @@ a.append(11)
 a.append(40, 41, 42, 43, 44, 45)
 a.append(9)
 a.append(10)
+b.append(15)
+b.append(30, 81, 32, 35, 36, 29, 25, 15, 90, 1)
+b.append(9)
 
 print(len(a))
 print(a.head.value, a.tail.value)
 
 a.traverse()
+a.sort()
 
-# print(mergeSort(a.head))
-
-# b = mergeSort(a.head)
-# printList(b)
+b.traverse()
+b.sort()
