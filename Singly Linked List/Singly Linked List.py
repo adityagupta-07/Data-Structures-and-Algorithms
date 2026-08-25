@@ -30,14 +30,15 @@ class SinglyLinkedList:
     def __iter__(self):
         return LinkedListIterator(self.head)
 
-    def append(self, value):
-        new_node = Node(value)
-        if self._length == 0:
-            self.head = self.tail = new_node
-        else:
-            self.tail.next = new_node
-            self.tail = new_node
-        self._length += 1
+    def append(self, *values): # accepts arbitary number of arguments and packs them into a tuple
+        for value in values:
+            new_node = Node(value)
+            if self._length == 0:
+                self.head = self.tail = new_node
+            else:
+                self.tail.next = new_node
+                self.tail = new_node
+            self._length += 1
         return self
 
     def pop_left(self):
@@ -188,6 +189,9 @@ a.append(21)
 a.append(29)
 a.append(19)
 a.append(11)
+a.append(40, 41, 42, 43, 44, 45)
+a.append(9)
+a.append(10)
 
 print(len(a))
 print(a.head.value, a.tail.value)
